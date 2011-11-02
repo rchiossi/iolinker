@@ -1,9 +1,8 @@
 .text
 .align 4
-.globl __linker_init
-.globl _start
-	.type _start,@function	
-_start:
+.globl _ld_start
+	.type _ld_start,@function	
+_ld_start:
 	mov %esp, %eax
 	pushl %esp
 
