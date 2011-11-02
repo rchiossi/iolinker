@@ -1,0 +1,3 @@
+Custom dynamic linker based on Android Bionic.
+
+This code will be used eventually in an IO level.
