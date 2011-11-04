@@ -1,14 +1,14 @@
 target: target.c linker.so
-	gcc -Wl,--dynamic-linker=./linker.so -o target target.c
+	gcc -g -Wl,--dynamic-linker=./linker.so -o target target.c
 
 linker.so: begin.o linker.o
-	ld -shared -Bsymbolic -e _ld_start -o linker.so begin.o linker.o
+	ld -shared -Bsymbolic -z now -e _ld_start -o linker.so begin.o linker.o
 
 begin.o: begin.S
-	gcc -c begin.S
+	gcc -fPIC -g -c begin.S
 
 linker.o: linker.c
-	gcc -c linker.c
+	gcc -fPIC -g -c linker.c
 
 dump:
 	objdump -D target > target.dump
@@ -17,4 +17,4 @@ dump:
 	objdump -D begin.o > begin.dump
 
 clean:
-	rm *.o *.so *.dump target
+	rm -rf *.o *.so *.dump target
