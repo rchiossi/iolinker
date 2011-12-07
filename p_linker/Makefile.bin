@@ -1,0 +1,5 @@
+p_linker: p_linker.c
+	  gcc -g -o p_linker -Wl,-e,_ld_start p_linker.c
+
+clean:
+	rm p_linker
